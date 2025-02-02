@@ -3,7 +3,7 @@ import uvicorn
 from app.core.config import settings
 from app.api import router as api_router
 
-from app.create_fastapi_app import create_app
+from create_fastapi_app import create_app
 from fastapi_pagination import add_pagination
 
 main_app = create_app(
