@@ -1,0 +1,56 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+*.pyd
+*.pyo
+*.egg-info/
+dist/
+build/
+*.sqlite3
+
+# Virtual environments
+venv/
+.env/
+.env
+.envrc
+*.venv
+pip-log.txt
+pip-delete-this-directory.txt
+poetry.lock
+
+# JetBrains IDE (PyCharm, WebStorm, IntelliJ IDEA)
+.idea/
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# Eclipse
+.project
+.classpath
+.settings/
+
+# Logs and system files
+*.log
+*.out
+*.pid
+*.seed
+*.bak
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Docker
+docker-compose.override.yml
+
+# FastAPI / Django / Flask
+instance/
+media/
+static/

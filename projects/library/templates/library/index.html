@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{% static 'library/img/header/top/logo.svg' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'library/css/swiper-bundle.min.css' %}">
+    <link rel="stylesheet" href="{% static 'library/css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'library/css/iconfont.css' %}">
+    <title>Books Nowadays</title>
+</head>
+<body>
+    <div class="wrapper">
+        {% include 'library/includes/header.html' %}
+        <main class="main">
+            <section class="section-welcome">
+                <div class="welcome__wrapper">
+                    <div class="welcome__circle">
+
+                    </div>
+                    <div class="welcome__body body _container">
+                        <div class="body__info">
+                            <div class="body__title">
+                                WELOCME TO LIBRARY
+                            </div>
+                            <div class="body__text">
+                                Best Books <br> Collection For <br> Your Home
+                            </div>
+                            <a href="{% url 'book:book_shop' %}">
+                                <div class="body__button">
+                                    Shop Now
+                                    <div class="_icon-arrow-right">
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="section-feature">
+                <div class="feature__wrapper _container">
+                    <ul class="feature__list">
+                        <li class="feature__item">
+                            <img src="{% static 'library/img/main/features/icon/box.svg' %}" alt="" class="feature__item-img">
+                            <div class="feature__item-info info">
+                                <div class="info__title">
+                                    Discount
+                                </div>
+                                <div class="info__text">
+                                    Every week new sales
+                                </div>
+                            </div>
+                        </li>
+                        <li class="feature__item">
+                            <img src="{% static 'library/img/main/features/icon/delivery-truck.svg' %}" alt="" class="feature__item-img">
+                            <div class="feature__item-info info">
+                                <div class="info__title">
+                                    Free Delivery
+                                </div>
+                                <div class="info__text">
+                                    100% Free for all orders
+                                </div>
+                            </div>
+                        </li>
+                        <li class="feature__item">
+                            <img src="{% static 'library/img/main/features/icon/24-hours.svg' %}" alt="" class="feature__item-img">
+                            <div class="feature__item-info info">
+                                <div class="info__title">
+                                    Great Support 24/7
+                                </div>
+                                <div class="info__text">
+                                    We care your experiences
+                                </div>
+                            </div>
+                        </li>
+                        <li class="feature__item">
+                            <img src="{% static 'library/img/main/features/icon/shield.svg' %}" alt="" class="feature__item-img">
+                            <div class="feature__item-info info">
+                                <div class="info__title">
+                                    Secure Payment
+                                </div>
+                                <div class="info__text">
+                                    100% Secure Payment Method
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            <section class="section-company">
+                <div class="company__wrapper _container">
+                    <ul class="company__list">
+                        <li class="company__item">
+                            <img src="{% static 'library/img/main/company/logo/logo_1.svg' %}" alt="" class="company__item-img">
+                        </li>
+                        <li class="company__item">
+                            <img src="{% static 'library/img/main/company/logo/logo_2.svg' %}" alt="" class="company__item-img">
+                        </li>
+                        <li class="company__item">
+                            <img src="{% static 'library/img/main/company/logo/logo_3.svg' %}" alt="" class="company__item-img">
+                        </li>
+                        <li class="company__item">
+                            <img src="{% static 'library/img/main/company/logo/logo_4.svg' %}" alt="" class="company__item-img">
+                        </li>
+                        <li class="company__item">
+                            <img src="{% static 'library/img/main/company/logo/logo_5.svg' %}" alt="" class="company__item-img">
+                        </li>
+                        <li class="company__item">
+                            <img src="{% static 'library/img/main/company/logo/logo_6.svg' %}" alt="" class="company__item-img">
+                        </li>
+                        <li class="company__item">
+                            <img src="{% static 'library/img/main/company/logo/logo_7.svg' %}" alt="" class="company__item-img">
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            <section class="section-categories">
+                <div class="swiper__wrapper categories__wrapper _container">
+                    <div class="swiper__header categories__header">
+                        <div class="swiper__header-title categories__header-title">
+                            Top Categories
+                        </div>
+                        <div class="swiper__buttons categories__buttons">
+                            <div class="link-button swiper__buttons-prev categories__buttons-prev _icon-arrow-left">
+                            </div>
+                            <div class="link-button swiper__buttons-next categories__buttons-next _icon-arrow-right">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="categories__swiper">
+                        <div class="swiper-wrapper">
+                            {% for genre in genres %}
+                                <div class="categories__slide swiper-slide">
+                                    <a href="{% url 'book:book_category' pk=genre.pk %}">
+                                        <img class="categories__slide-img" src="{{ genre.Image.url }}" alt="">
+                                        <div class="categories__slide-info">
+                                            <div class="categories__slide-title">
+                                                {{ genre.Name }}
+                                            </div>
+                                                {% for category in categories %}
+                                                    {% if category.0 == genre.pk %}
+                                                    <div class="categories__slide-text">
+                                                        {{ category.1 }} Books
+                                                    </div>
+                                                    {% endif %}
+                                                {% endfor %}
+                                        </div>
+                                    </a>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </section>
+            {% include 'book/includes/products.html' %}
+            <section class="section-review">
+                <div class="swiper__wrapper review__wrapper _container">
+                    <div class="swiper__header review__header">
+                        <div class="swiper__header-title review__header-title">
+                            What Client Sayes About Us
+                        </div>
+                        <div class="swiper__buttons review-block__buttons">
+                            <div class="link-button swiper__buttons-prev review-buttons__prev _icon-arrow-left">
+                            </div>
+                            <div class="link-button swiper__buttons-next review-buttons__next _icon-arrow-right">                            
+                            </div>
+                        </div>
+                    </div>
+                    <div class="review__swiper">
+                        <div class="swiper-wrapper">
+                            <div class="review__slide swiper-slide">
+                                <img class="review__slide-quotes" src="{% static 'library/img/main/review/double_quotes.svg' %}" alt="">
+                                <div class="review__card">
+                                    <div class="review__card-text">
+                                        “Very nice and modern design, really makes it feel better
+                                         while shopping! I'm amazed by how good it is, been looking
+                                         for a site like this for a while!“
+                                    </div>
+                                    <div class="review__card-profile profile">
+                                        <div class="profile__img">
+                                            <img src="{% static 'library/img/main/review/profile/client_1.jpg' %}" alt="">
+                                        </div>
+                                        <div class="profile__info">
+                                            <div class="profile-info__title">
+                                                John
+                                            </div>
+                                            <div class="profile-info__text">
+                                                Fashion Designer
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="review__slide swiper-slide">
+                                <img class="review__slide-quotes" src="{% static 'library/img/main/review/double_quotes.svg' %}" alt="">
+                                <div class="review__card">
+                                    <div class="review__card-text">
+                                        “Have been visiting cites like this my whole life, since
+                                        I love books so much. And what can I say if not 'wow' by
+                                        how clear and fresh this one looks and feels while using!“
+                                    </div>
+                                    <div class="review__card-profile profile">
+                                        <div class="profile__img">
+                                            <img src="{% static 'library/img/main/review/profile/client_2.jpg' %}" alt="">
+                                        </div>
+                                        <div class="profile__info">
+                                            <div class="profile-info__title">
+                                                Mary
+                                            </div>
+                                            <div class="profile-info__text">
+                                                Fashion Designer
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="review__slide swiper-slide">
+                                <img class="review__slide-quotes" src="{% static 'library/img/main/review/double_quotes.svg' %}" alt="">
+                                <div class="review__card">
+                                    <div class="review__card-text">
+                                        “It's all good when you talk about books, but what is bette
+                                        is that you can even buy a chair of your likes here, and it has
+                                        a good price honestly.“
+                                    </div>
+                                    <div class="review__card-profile profile">
+                                        <div class="profile__img">
+                                            <img src="{% static 'library/img/main/review/profile/client_1.jpg' %}" alt="">
+                                        </div>
+                                        <div class="profile__info">
+                                            <div class="profile-info__title">
+                                                James
+                                            </div>
+                                            <div class="profile-info__text">
+                                                Fashion Designer
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="review__slide swiper-slide">
+                                <img class="review__slide-quotes" src="{% static 'library/img/main/review/double_quotes.svg' %}" alt="">
+                                <div class="review__card">
+                                    <div class="review__card-text">
+                                        “It's all good when you talk about books, but what is better
+                                        is that you can even buy a chair of your likes here, and it has
+                                        a good price honestly.“
+                                    </div>
+                                    <div class="review__card-profile profile">
+                                        <div class="profile__img">
+                                            <img src="{% static 'library/img/main/review/profile/client_2.jpg' %}" alt="">
+                                        </div>
+                                        <div class="profile__info">
+                                            <div class="profile-info__title">
+                                                Lamar
+                                            </div>
+                                            <div class="profile-info__text">
+                                                Fashion Designer
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="review__slide swiper-slide">
+                                <img class="review__slide-quotes" src="{% static 'library/img/main/review/double_quotes.svg' %}" alt="">
+                                <div class="review__card">
+                                    <div class="review__card-text">
+                                        “I will not say that this cite is the best i have ever seen or something,
+                                        but I might say that in the books sphere this one is truly amazing and wonderful,
+                                        needless to say that my expectations were far, far lower.“
+                                    </div>
+                                    <div class="review__card-profile profile">
+                                        <div class="profile__img">
+                                            <img src="{% static 'library/img/main/review/profile/client_1.jpg' %}" alt="">
+                                        </div>
+                                        <div class="profile__info">
+                                            <div class="profile-info__title">
+                                                Connor
+                                            </div>
+                                            <div class="profile-info__text">
+                                                Fashion Designer
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        {% include 'library/includes/footer.html' %}
+        {% include 'library/includes/sidebar.html' %}
+        {% include 'library/includes/navbar.html' %}
+    </div>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="{% static 'library/js/swiper-bundle.min.js' %}"></script>
+    <script src="{% static 'library/js/scripts.js' %}"></script>
+    <script src="{% static 'library/js/swiper.js' %}"></script>
+
+    <script>
+        $(document).on('click', '#add-cart', function(e) {
+          e.preventDefault();
+          $.ajax({
+            type: 'POST',
+            url: '{% url "cart-add" %}',
+            data: {
+              book_id: $('#add-cart').val(),
+              csrfmiddlewaretoken: '{{ csrf_token }}',
+              action: 'post',
+            },
+            success: function(json){
+              console.log(json)
+            },
+            error: function(xhr, errmsg, err) {
+
+            }
+
+          });
+
+        })
+    </script>
+</body>
+</html>

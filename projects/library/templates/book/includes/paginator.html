@@ -1,0 +1,26 @@
+{% load static %}
+<section class="section-paginator">
+    <div class="paginator__wrapper _container">
+        {% if books.has_other_pages %}
+            <ul class="paginator__list">
+            {% if books.has_previous %}
+                <li class="paginator__item"><a class="link" href="?page={{ books.previous_page_number }}">&laquo;</a></li>
+            {% else %}
+                <li class="paginator__item ">&laquo;</li>
+            {% endif %}
+            {% for i in books.paginator.page_range %}
+                {% if books.number == i %}
+                    <li class="paginator__item ">{{ i }}</li>
+                {% else %}
+                    <li class="paginator__item"><a class="link" href="?page={{ i }}">{{ i }}</a></li>
+                {% endif %}
+            {% endfor %}
+        {% if books.has_next %}
+            <li class="paginator__item"><a class="link" href="?page={{ books.next_page_number }}">&raquo;</a></li>
+        {% else %}
+            <li class="paginator__item">&raquo;</li>
+        {% endif %}
+            </ul>
+{% endif %}
+    </div>
+</section>

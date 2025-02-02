@@ -1,0 +1,85 @@
+{% load static %}
+<footer class="footer">
+    <div class="footer__wrapper _container">
+        <div class="footer__main">
+            <ul class="footer__main-list">
+                <li class="footer__main-column column">
+                    <ul class="column__main">
+                        <li class="column__main-item">
+                            <div class="logo">
+                                <a href="{% url 'home' %}">
+                                    <img class="header-logo__img" src="{% static 'library/img/header/top/logo.svg' %}" alt="logo">
+                                    <div class="logo__title hide-mobile">Library</div>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="column__main-item">
+                            Vivamus tristique odio sit amet velit semper, <br>
+                            eu posuere turpis interdum. <br>
+                            Cras egestas purus 
+                        </li>                                
+                        <li class="column__main-item">
+                            <div class="column__main-social">
+                                <a href="#" class="link _icon-facebook"></a>
+                                <a href="#" class="link _icon-twitter"></a>  
+                                <a href="#" class="link _icon-instagram"></a>   
+                                <a href="#" class="link _icon-pinterest"></a>      
+                                <a href="#" class="link _icon-youtube"></a>                             
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <li class="footer__main-column column">
+                    <div class="column__title">CATEGORY</div>
+                    <ul class="column__category">
+                        {% for g in genres %}
+                        <li class="column__category-item">
+                            <a href="{% url 'book:book_category' pk=g.pk %}" class="link">{{ g.Name }}</a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </li>
+                <li class="footer__main-column column">
+                    <div class="column__title">SUPPORT</div> 
+                    <ul class="column__support">
+                        <li class="column__support-item">
+                            <a class="link" href="#">Help & Support</a>
+                        </li>
+                        <li class="column__support-item">
+                            <a class="link" href="#">Tearms & Conditions</a>
+                        </li>
+                        <li class="column__support-item">
+                            <a class="link" href="#">Privacy Policy</a>
+                        </li>
+                        <li class="column__support-item">
+                            <a class="link" href="#">Help</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="footer__main-column column">
+                    <div class="column__title">NEWSLETTER</div>
+                    <ul class="footer-item__newsletter">
+                        <li class="footer-newsletter__item">
+
+                        </li>
+                        <li class="footer-newsletter__item">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br>
+                             Nullam tincidunt erat enim.
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="footer__bottom">
+            <div class="footer__bottom-signature">
+                @ 2024 - Blogy - Designed & Develop by Bezdar 4 pos Hoodwink
+            </div>
+            <div class="footer__bottom-payment">
+                <div class="_icon-mastercard"></div>
+                <div class="_icon-paypal"></div>
+                <div class="_icon-amex"></div>
+                <div class="_icon-visa"></div>
+            </div>
+        </div>
+    </div>
+</footer>

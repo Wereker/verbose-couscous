@@ -1,0 +1,54 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - ./app/.env
+    ports:
+      - "8000:8000"
+    depends_on:
+      - pg
+      - redis
+    command: python main.py
+    container_name: carwash-api
+
+  pg:
+    image: postgres
+    environment:
+      POSTGRES_DB: app
+      POSTGRES_USER: app
+      POSTGRES_PASSWORD: app
+    ports:
+      - "5433:5432"
+    container_name: carwash-pg
+
+  redis:
+    image: redis:latest
+    ports:
+      - "6379:6379"
+    container_name: carwash-redis
+
+  celery_worker:
+      build:
+        context: .
+        dockerfile: Dockerfile
+      env_file:
+        - ./app/.env
+      command: celery -A app.celery.celery_app worker --loglevel=info
+      depends_on:
+        - redis
+        - pg
+      container_name: carwash-celery-worker
+
+  celery_beat:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - ./app/.env
+    command: celery -A app.celery.celery_app beat --loglevel=info
+    depends_on:
+      - redis
+      - pg
+    container_name: carwash-celery-beat

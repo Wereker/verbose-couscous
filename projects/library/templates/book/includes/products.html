@@ -1,0 +1,34 @@
+{% load static %}
+<section class="section-products">
+    <div class="products__wrapper _container">
+        <div class="products__header">
+            <div class="products__header-title">
+                Our Products
+            </div>
+            <ul class="products__header-menu">
+                <li class="products__header-item"><a id='filterBtn' class="link">ALL</a></li>
+                <li class="products__header-item"><a id='filterBtn' class="link">NEWEST</a></li>
+                <li class="products__header-item"><a id='filterBtn' class="link">BEST SELLERS</a></li>
+            </ul>
+        </div>
+        <ul id='productsList' class="products__list">
+            {% for book in books %}
+            <li class="products__item">
+                <a class="link" href="{% url 'book:book_about' pk=book.id %}">
+                    <img class="products__item-img" src="{{ book.Cover.url }}" alt="">
+                    <div class="products__item-container">
+                        <div class="products__item-info">
+                            <div class="products__item-title">
+                                {{ book.Title }}
+                            </div>
+                            <div class="products__item-price">
+                                ${{ book.Price }}
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</section>

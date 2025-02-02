@@ -1,0 +1,98 @@
+{% load static %}
+<header class="header">
+    <div class="header__top">
+        <div class="top__wrapper _container">
+            <div class="top__logo logo">
+                <a href="{% url 'home' %}">
+                    <img src="{% static 'library/img/header/top/logo.svg' %}" alt="logo">
+                    <div class="logo__title hide-mobile">Library</div>
+                </a>
+            </div>
+            <div class="top__search-bar">
+                <div class="search-bar _icon-search">
+                    <input class="search-bar__input" type="text" id="searchField" placeholder="Search here...">
+                </div>
+                <div class="search-bar__result">
+                    <ul class="search-bar__list" id="searchResult">
+
+                    </ul>
+                </div>
+            </div>
+            <nav class="top__menu menu hide-mobile">
+                <ul class="top__menu-list">
+                    <li class="top__menu-item cart">
+                        <a href="{% url 'book:cart-summary' %}" class="link">
+                            <div class="_icon-cart"></div>
+                            <div class="cart__title">
+                                Cart
+                            </div>
+                                <div class="cart__circle">
+                                    <div id='cart_quantity' class="cart__counter">{{ cart|length }}</div>
+                                </div>
+                        </a>
+                    </li>
+                    <li class="top__menu-item">
+                        <a href="" class="link _icon-heart">
+                        </a>
+                    </li>
+                    <li onclick="toggleProfile()" class="top__menu-item">
+                        <a class="link _icon-user">
+                        </a>
+                    </li>
+                </ul>
+                <ul class="top__menu-user user">
+                    {% if is_logged %}
+                        <li class="user__item _icon-user"><a class='link' href="{% url 'user:profile' pk=user.id %}">{{ user.first_name }}&nbsp;{{ user.last_name }}</a></li>
+                        <li class="user__item _icon-login"><a class='link' href="{% url 'user:logout' %}">Logout</a></li>
+                    {% else %}
+                        <li class="user__item _icon-logout"><a class='link' href="{% url 'user:login' %}">Login</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <div class="header__bottom hide-mobile">
+        <div class="bottom__wrapper _container">
+            <nav class="bottom__menu">
+                <ul class="bottom__menu-list">
+                    <li class="bottom__menu-item menu">
+                        <div class="bottom__menu-filter filter" onclick=toggleMenu()>
+                            <div class="filter__text _icon-bars">
+                                &nbsp;All Categories
+                            </div>
+                        </div>
+                        <ul class="category__list">
+                            <li class="category__item bottom__menu-item">
+                                <a href="{% url 'book:book_shop' %}" class="link">All</a>
+                                <span>></span>
+                            </li>
+                            {% for g in genres %}
+                            <li class="category__item bottom__menu-item">
+                                <a href="{% url 'book:book_category' pk=g.pk %}" class="link">{{ g.Name }}</a>
+                                <span>></span>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                    <li class="bottom__menu-item">
+                        <a href="{% url 'home' %}" class="link">Home</a>
+                    </li>
+                    <li class="bottom__menu-item">
+                        <a href="{% url 'book:book_shop' %}" class="link">Shop</a>
+                    </li>
+                    <li class="bottom__menu-item">
+                        <a href="#" class="link">About</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="bottom__contact contact">
+                <div class="contact__var">
+                    Contact:
+                </div>
+                <div class="contact__phone">
+                    (808) 555-01111
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

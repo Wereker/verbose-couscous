@@ -1,0 +1,15 @@
+{% load static %}
+<div class="navbar-mobile hide-desktop">
+    <ul class="navbar-mobile__list">
+        <li><a href="{% url 'home' %}" class="link _icon-house">
+        </a></li>
+        <li><a href="{% url 'book:cart-summary' %}" class="link _icon-cart">
+        </a></li>
+        <li><a href="" class="link _icon-heart">
+        </a></li>
+        <li><a href="" class="link _icon-user">
+        </a></li>
+        <li onclick=toggleSidebar()><a class="link _icon-bars">
+        </a></li>
+    </ul>
+</div>
