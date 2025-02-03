@@ -50,8 +50,8 @@
 
 1. **Клонируйте репозиторий:**
    ```bash
-   git clone https://github.com/Wereker/projects.git
-   cd projects
+   git clone https://github.com/Wereker/verbose-couscous.git
+   cd verbose-couscous
    ```
 
 2. **Перейдите в нужный проект и следуйте инструкциям в его README.md:**
