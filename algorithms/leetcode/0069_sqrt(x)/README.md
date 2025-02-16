@@ -1,4 +1,4 @@
-# 🟢 Two Sum (LeetCode #1)
+# 🟢 Sqrt(x) (LeetCode #69)
 
 ## 📌 Условия задачи
 

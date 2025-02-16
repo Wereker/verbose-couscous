@@ -1,4 +1,4 @@
-# 🟢 Two Sum (LeetCode #1)
+# 🟢 Add Binary (LeetCode #67)
 
 ## 📌 Условия задачи
 
